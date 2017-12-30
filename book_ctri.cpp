@@ -12,11 +12,12 @@ using namespace std;
 struct student_infomation
 {
 	int id;//编号
+	int b[10];//你所借书的的数量，上限10
 	int borrowsum;//已借书,默认0
 	string name;//读者姓名
-	int book_num;//现在还有多少本书未还，默认为0
+	int book_num;//书数，默认为0
 	string borrowday;//上次借阅时间
-	int b[10];//你所借书的的编号，最多10本
+	
 };
 struct book
 {
@@ -26,12 +27,12 @@ struct book
 	string kind;//图书种类
 	double price;//图书价格
 	int sum;//图书总库存存量
-	int nowsum;//图书现库存量
-	string author;//图书作者
-	int appointment;//图书预约量,初始化为0
+	int nowsum;//库存量
+	string author;//作者
+	int appointment;//图书预约量
 	bool ok;//是否可借,初始为可以
-	string borrowdate;//图书最近一次借出时间，默认为0000-00-00；
-	string returndate;//图书最近一次归还时间，默认为0000-00-00；
+	string borrowdate;//图书最近一次借出时间
+	string returndate;//图书最近一次归还时间
 	string room;//馆藏地
 };
 bool cmpByidnum(book a, book b);
@@ -578,12 +579,12 @@ int main()
 			}
 			case 2:
 			{
-				cout << "              1.按书名查询 " << endl;
-				cout << "              2.按作者查询 " << endl;
-				cout << "              3.按种类查询 " << endl;
-				cout << "              4.按书名和作者查询 " << endl;
-				cout << "              5.退出 " << endl;
-				cout << "              请选择功能,输入指令 " << endl;
+				cout << "         1.按书名查询 " << endl;
+				cout << "         2.按作者查询 " << endl;
+				cout << "         3.按种类查询 " << endl;
+				cout << "         4.按书名和作者查询 " << endl;
+				cout << "         5.退出 " << endl;
+				cout << "         请选择功能,输入指令 " << endl;
 				int select;
 				do
 				{
@@ -693,7 +694,7 @@ int main()
 			case 9:
 			{
 				mybook.PrintToLi();
-				cout << "-------------------------------------------------------------------------------------------------------------------" << endl;
+				cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 				break;
 			}
 			}
@@ -731,9 +732,9 @@ int main()
 				mybook.AddStudent(temp);
 				mybook.Save_student();
 				//cout<<"信息保存成功"<<endl;
-				cout << "                注册成功！请记住你的读者号，若忘记请联系管理员!\n";
-				cout << "                姓名:" << temp.name << endl;
-				cout << "                读者号：" << temp.id << endl;
+				cout << "            注册成功！请记住你的读书号\n";
+				cout << "            姓名:" << temp.name << endl;
+				cout << "            读书号：" << temp.id << endl;
 				k = temp.id;
 			}
 			else
